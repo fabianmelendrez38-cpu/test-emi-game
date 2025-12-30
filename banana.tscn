@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjbgb22h7qioh"]
+
+[ext_resource type="Texture2D" uid="uid://d2loquxbklka4" path="res://assets/banano.png" id="1_mb6cj"]
+[ext_resource type="Script" uid="uid://cvedi8utglrm6" path="res://scripts/banana.gd" id="1_s1qo3"]
+
+[node name="banana" type="Area3D" groups=["banana"]]
+script = ExtResource("1_s1qo3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_mb6cj")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

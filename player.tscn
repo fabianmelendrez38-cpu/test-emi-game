@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctry45g8q8k4t"]
+
+[ext_resource type="Script" uid="uid://dsikv86qyo73g" path="res://player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+height = 2.650879
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4flbx"]
+radius = 0.001
+
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="camerapivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012337387, 1.0621656, 0)
+
+[node name="Camera3D" type="Camera3D" parent="camerapivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26055455, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+shape = SubResource("SphereShape3D_4flbx")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
